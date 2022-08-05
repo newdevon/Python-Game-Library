@@ -15,6 +15,7 @@ class UnknownChoiceError(Exception): pass #handles bad inputs
 
 def player_vs_player():
     while True:
+        print("\nWelcome to 1v1 Rock Paper Scissor\n")
         print("Choose Rock, Paper, or Scissor")
         p1, p2 = None, None
 
@@ -60,11 +61,12 @@ def player_vs_player():
         play_again = input("Play again? (yes/no): ").lower()
 
         if play_again != "yes":
-            "Till next time!"
+            print("Till next time!")
             break
 
 def player_vs_computer():
     while True:
+        print("\nWelcome to Ai Rock Paper Scissor\n")
         computer = random.choice(choices)
         player = input("Rock, Paper, or Scissor?: ").lower()
 
@@ -121,5 +123,5 @@ def player_vs_computer():
         play_again = input("Play again? (yes/no): ").lower()
 
         if play_again != "yes":
-            "Till next time!"
+            print("Till next time!")
             break
