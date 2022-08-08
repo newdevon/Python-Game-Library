@@ -12,7 +12,7 @@ from random import *
 
 def number_guesser():
     while True:
-        print("\nWelcome to Number Guessor\n")
+        print("\nWelcome to Number Guesser\n")
         number = randint(1, 100)
         allowed = 5
 
