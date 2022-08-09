@@ -1,8 +1,10 @@
 # make note of these imports.
-import numpy
+import numpy as np
 import pygame
 import math
 import sys
+
+#from Games.ttt import BOARD
 
 """
 declare global variables for:
@@ -19,13 +21,13 @@ rgb values. You may also change the size
 of the board to experiment.
 """
 # REPLACE NONE VALUES BELOW WITH THE CORRECT DATA TYPE
-BOARD_COLOR = None # (red, green, blue)
-SPOT_COLOR = None
-P1_COLOR = None 
-P2_COLOR = None
+BOARD_COLOR = (0, 0, 255) # (red, green, blue)
+SPOT_COLOR = (0, 0, 0) # black
+P1_COLOR = (255, 0, 0) # black 
+P2_COLOR = (255, 255, 0) # yellow
 
-COLUMNS = None # int
-ROWS = None
+COLUMNS = 7 # int
+ROWS = 6
 
 def make_board():
     '''
@@ -40,9 +42,8 @@ def make_board():
     ---------------------
     numpy.zeros(shape)
     '''
-    # ----------------
-    # INSERT CODE HERE
-    # ----------------
+    #board = np.empty(shape=(6,7))
+    return np.zeros(shape=(ROWS, COLUMNS))
 
 def loc_works(board, column):
     '''
@@ -63,9 +64,12 @@ def loc_works(board, column):
     ---------------------
     ROWS
     '''
-    # ----------------
-    # INSERT CODE HERE
-    # ----------------
+    row = 0
+    while row <= 5:
+        if board[row][column] == 0:
+            return True
+        row += 1
+    return False
 
 def next_row(board, column):
     '''
@@ -80,10 +84,11 @@ def next_row(board, column):
     -------
     row = int
     '''
-    # ----------------
-    # INSERT CODE HERE
-    # ----------------
-
+    row = 0
+    while row <= 5:
+        if board[row][column] == 0:
+            return row
+        row += 1
 def print_board(board):
     '''
     Print a vertically flipped version of the board to the console.
@@ -96,9 +101,7 @@ def print_board(board):
     ---------------------
     numpy.flip(array, axis)
     '''
-    # ----------------
-    # INSERT CODE HERE
-    # ----------------
+    print(np.flip(board, 0))
 
 def win_check(board, chip):
     '''
@@ -107,7 +110,7 @@ def win_check(board, chip):
 
     Parameters
     ----------
-    board = ndarray
+    board = ndarray,
     chip = int
 
     Returns
@@ -123,23 +126,32 @@ def win_check(board, chip):
             and board[row][column + 3] == chip:
                 return True
 
+    # this code block checks for combos of 4 along vertical lines
     for column in range(COLUMNS):
         for row in range(ROWS - 3):
-            # ----------------
-            # INSERT CODE HERE
-            # ----------------
+            if board[row][column] == chip \
+            and board[row + 1][column] == chip \
+            and board[row + 2][column] == chip \
+            and board[row + 3][column] == chip:
+                return True
 
+    # this code block checks for combos of 4 along negative slopes
     for column in range(COLUMNS - 3):
         for row in range(ROWS - 3):
-            # ----------------
-            # INSERT CODE HERE
-            # ----------------
+            if board[row][column] == chip \
+            and board[row + 1][column + 1] == chip \
+            and board[row + 2][column + 2] == chip \
+            and board[row + 3][column + 3] == chip:
+                return True
 
+    # this code block checks for combos of 4 along positve slopes
     for column in range(COLUMNS - 3):
         for row in range(3, ROWS):
-            # ----------------
-            # INSERT CODE HERE
-            # ----------------
+            if board[row][column] == chip \
+            and board[row - 1][column + 1] == chip \
+            and board[row - 2][column + 2] == chip \
+            and board[row - 3][column + 3] == chip:
+                return True
 
 def play_c4():
     '''
@@ -280,13 +292,11 @@ def play_c4():
         column = int
         chip = int
         '''
-        # ----------------
-        # INSERT CODE HERE
-        # ----------------
+        board[row][column] = chip
 
     # Now we'll make the board and print it in the console.
-    c4_board = ????? # MAKE THE BOARD AND ASSIGN IT
-    ????? # PRINT THE BOARD
+    c4_board = make_board() # MAKE THE BOARD AND ASSIGN IT
+    print_board(c4_board) # PRINT THE BOARD
 
     # We'll define some local, mutable variables.
     game_over = False
@@ -305,7 +315,7 @@ def play_c4():
     screen = pygame.display.set_mode(size)
 
     # With that done, we can render the board in a new window.
-    ????? # DRAW THE UPDATED BOARD
+    draw_board(c4_board) # DRAW THE UPDATED BOARD
 
     # Set the font we'll use for the victory/tie message.
     game_font = pygame.font.SysFont("monospace", 75)
@@ -377,11 +387,11 @@ def play_c4():
                     x = event.pos[0]
                     column = int(math.floor(x / screen_size))
 
-                    if ?????: # CHECK FOR VALID LOCATION IN COLUMN
-                        row = ????? # SELECT NEXT AVAILABLE ROW
-                        ????? # PLACE P1 CHIP
+                    if loc_works(c4_board, column): # CHECK FOR VALID LOCATION IN COLUMN
+                        row = next_row(c4_board, column) # SELECT NEXT AVAILABLE ROW
+                        place_chip(c4_board, row, column, 1) # PLACE P1 CHIP
 
-                        if ?????: # CHECK FOR P1 VICTORY
+                        if win_check(c4_board, 1): # CHECK FOR P1 VICTORY
                             label = game_font.render("P1 wins!", 1, P1_COLOR)
                             screen.blit(label, (40, 10))
                             game_over = True
@@ -390,17 +400,19 @@ def play_c4():
                     x = event.pos[0]
                     column = int(math.floor(x/screen_size))
 
-                    if ?????: # CHECK FOR VALID LOCATION IN COLUMN
-                        row = ????? # SELECT NEXT AVAILABLE ROW
-                        ????? # PLACE P2 CHIP
+                    if loc_works(c4_board, column): # CHECK FOR VALID LOCATION IN COLUMN
+                        row = next_row(c4_board, column) # SELECT NEXT AVAILABLE ROW
+                        place_chip(c4_board, row, column, 2) # PLACE P2 CHIP
 
-                        if ?????: # CHECK FOR P2 VICTORY
+                        if win_check(c4_board, 2): # CHECK FOR P2 VICTORY
                             label = game_font.render("P2 wins!", 2, P2_COLOR)
                             screen.blit(label, (40, 10))
                             game_over = True
 
                 # PRINT THE UPDATED BOARD
+                print_board(c4_board)
                 # DRAW THE UPDATED BOARD
+                draw_board(c4_board)
 
                 turn += 1
                 turn = turn % 2
