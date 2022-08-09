@@ -18,7 +18,7 @@ python3 -m pygame.examples.aliens
 
 ## Demo/Usage
 
-```bash
+```
 Welcome to the Python Game Library C: 
 
 We have Connect 4, Tic-Tac-Toe, Number Guesser, Reaction Time, and Rock-Paper-Scissor
@@ -31,7 +31,30 @@ Which game would you like to play?
 (4) Reaction Time
 (5) Rock-Paper-Scissor 1v1
 (6) Rock-Paper-Scissor vs Ai
-Your choice?
+Your choice? 2
+Welcome to Tic Tac Toe!
+
+  |   |
+- + - + -
+  |   |
+- + - + -
+  |   |
+
+X's turn to move
+Where would you like to move? (1-9): 1
+X |   |  
+- + - + -
+  |   |
+- + - + -
+  |   |
+
+O's turn to move
+Where would you like to move? (1-9): 4
+X |   |  
+- + - + -
+O |   |
+- + - + -
+  |   |
 ```
 
 ## Contributing
