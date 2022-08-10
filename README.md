@@ -19,6 +19,9 @@ python3 -m pygame.examples.aliens
 ## Demo/Usage
 
 ```
+cd Games
+python app.py
+
 Welcome to the Python Game Library C: 
 
 We have Connect 4, Tic-Tac-Toe, Number Guesser, Reaction Time, and Rock-Paper-Scissor
