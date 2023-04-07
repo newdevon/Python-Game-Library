@@ -27,7 +27,7 @@ python app.py
 
 Welcome to the Python Game Library C:
 
-We have Pong, Connect 4, Tic-Tac-Toe, Number Guesser, Reaction Time, and Rock-Paper-Scissor
+We have Pong, Connect 4, Tic-Tac-Toe, Number Guesser, Reaction Time, and Rock-Paper-Scissors
 
 Which game would you like to play?
 
