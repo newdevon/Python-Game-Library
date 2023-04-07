@@ -1,10 +1,3 @@
-BOARD = {1: ' ',  2: ' ',  3: ' ',
-
-        4: ' ',  5: ' ',  6: ' ',
-
-        7: ' ',  8: ' ',  9: ' '}
-
-
 def render():
     '''
     Returns a string describing the board in its
@@ -150,6 +143,13 @@ def play_t3():
     *Note: this function refers to itself. Be careful about
     inescapable infinite loops.
     '''
+    global BOARD
+    BOARD = {1: ' ',  2: ' ',  3: ' ',
+
+        4: ' ',  5: ' ',  6: ' ',
+
+        7: ' ',  8: ' ',  9: ' '}
+
 
     while True:
         print("Welcome to Tic Tac Toe!\n")
@@ -186,7 +186,7 @@ def play_t3():
                 # and if there aren't, print a tie message,
                 print("DRAW! No more spaces left!")
                 # end the game,
-                # and break the loop.
+                # and break the while loop.
                 break
 
             # switch players with a quick conditional loop.

@@ -4,7 +4,6 @@ import pygame
 import math
 import sys
 
-#from Games.ttt import BOARD
 
 """
 declare global variables for:

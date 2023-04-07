@@ -1,20 +1,25 @@
 # Python Game Library
 
-Python Game library is a small curated collection of GUI and command-line games. With well known classics such as Connect 4, Tic-Tac-Toe, Rock-Paper-Scissors, and more.
+Python Game library is a small curated collection of GUI and command-line games. With well known classics such as Pong, Connect 4, Tic-Tac-Toe, Rock-Paper-Scissors, and more.
+
+NEW: Pong has now been added to the library, Pong can be played with another person with the (W/S) or (Up/Down) keys!
 
 ## Installation/Requirements
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Pygames and Numpy. Virtual environment recommended.
 
 ```bash
+pip install -r requirements.txt
+# OR
 python3 -m pip install -U pygame --user
 pip install numpy
 ```
+
 To see if Pygame works, run one of the included examples:
+
 ```bash
 python3 -m pygame.examples.aliens
 ```
-
 
 ## Demo/Usage
 
@@ -22,11 +27,11 @@ python3 -m pygame.examples.aliens
 cd Games
 python app.py
 
-Welcome to the Python Game Library C: 
+Welcome to the Python Game Library C:
 
-We have Connect 4, Tic-Tac-Toe, Number Guesser, Reaction Time, and Rock-Paper-Scissor
+We have Pong, Connect 4, Tic-Tac-Toe, Number Guesser, Reaction Time, and Rock-Paper-Scissors
 
-Which game would you like to play? 
+Which game would you like to play?
 
 (1) Connect 4
 (2) Tic-Tac-Toe
@@ -34,6 +39,7 @@ Which game would you like to play?
 (4) Reaction Time
 (5) Rock-Paper-Scissor 1v1
 (6) Rock-Paper-Scissor vs Ai
+(7) Pong
 Your choice? 2
 Welcome to Tic Tac Toe!
 
@@ -45,7 +51,7 @@ Welcome to Tic Tac Toe!
 
 X's turn to move
 Where would you like to move? (1-9): 1
-X |   |  
+X |   |
 - + - + -
   |   |
 - + - + -
@@ -53,7 +59,7 @@ X |   |
 
 O's turn to move
 Where would you like to move? (1-9): 4
-X |   |  
+X |   |
 - + - + -
 O |   |
 - + - + -
@@ -61,4 +67,5 @@ O |   |
 ```
 
 ## Contributing
+
 Forks and Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
