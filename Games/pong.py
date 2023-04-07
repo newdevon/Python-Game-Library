@@ -1,9 +1,9 @@
 import pygame
-pygame.init() # should init for every pygame import
+# pygame.init() # should init for every pygame import
 
 WIDTH, HEIGHT = 700, 500
-WIN = pygame.display.set_mode((WIDTH, HEIGHT)) # Our game window
-pygame.display.set_caption("Pong") # Window Title
+# WIN = pygame.display.set_mode((WIDTH, HEIGHT)) # Our game window
+# pygame.display.set_caption("Pong") # Window Title
 
 FPS = 60
 
@@ -16,8 +16,7 @@ PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
 BALL_RADIUS = 7
 
 WINNING_SCORE = 10
-SCORE_FONT = pygame.font.SysFont("couriernew", 50)
-
+# SCORE_FONT = pygame.font.SysFont("couriernew", 50)
 
 class Paddle:
     COLOR = WHITE
@@ -174,9 +173,12 @@ def handle_post_win(win, win_text, ball, left_paddle, right_paddle, left_score, 
     right_paddle.reset()
 
 
-def main():
-    run = True
-    clock = pygame.time.Clock()
+def play_pong():
+    pygame.init() # should init for every pygame import
+    WIN = pygame.display.set_mode((WIDTH, HEIGHT)) # Our game window
+    pygame.display.set_caption("Pong") # Window Title
+    global SCORE_FONT
+    SCORE_FONT = pygame.font.SysFont("couriernew", 50)
 
     left_paddle = Paddle(10, HEIGHT//2 - PADDLE_HEIGHT//2, PADDLE_WIDTH, PADDLE_HEIGHT)
     right_paddle = Paddle(WIDTH - 10 - PADDLE_WIDTH, HEIGHT//2 - PADDLE_HEIGHT//2, PADDLE_WIDTH, PADDLE_HEIGHT)
@@ -184,7 +186,9 @@ def main():
     ball = Ball(WIDTH//2, HEIGHT//2, BALL_RADIUS)
 
     left_score, right_score = 0, 0
-
+    
+    clock = pygame.time.Clock()
+    run = True
     while run:
         clock.tick(FPS) # keeps uniform speed of game between all PCs
         draw(WIN, [left_paddle, right_paddle], ball, left_score, right_score)
@@ -228,7 +232,3 @@ def main():
             
     pygame.quit()
 
-
-#This condition checks if this python file runs directly as a script and not through an import as a module. `__name__ is relative to the main script file`
-if __name__ == '__main__':
-    main()

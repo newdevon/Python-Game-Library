@@ -41,7 +41,7 @@ def number_guesser():
                     if guess < number: print("Higher!")
                     else: print("Lower!")
                     tens = guess // 10 # ceiling division
-                    print(f"The tens digit is {tens}")
+                    print(f"The tens digit is {tens}, Last 2 guesses!")
                 elif allowed == 1:
                     if guess < number: print("Higher!")
                     else: print("Lower!")

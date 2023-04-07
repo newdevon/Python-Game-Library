@@ -5,7 +5,7 @@ Done with simple if-else conditions and an array
 import random
 import time
 
-choices = ["rock","paper","scissor"]
+choices = ["rock","paper","scissors"]
 """
 Rock -> Scissors
 Scissors -> Paper
@@ -15,8 +15,8 @@ class UnknownChoiceError(Exception): pass #handles bad inputs
 
 def player_vs_player():
     while True:
-        print("\nWelcome to 1v1 Rock Paper Scissor\n")
-        print("Choose Rock, Paper, or Scissor")
+        print("\nWelcome to 1v1 Rock Paper Scissors\n")
+        print("Choose Rock, Paper, or Scissors")
         p1, p2 = None, None
 
         while True:
@@ -30,7 +30,7 @@ def player_vs_player():
                 break
 
             except UnknownChoiceError:
-                print("Please pick Rock Paper, or Scissor only")
+                print("Please pick Rock Paper, or Scissors only")
 
 
         if p1.lower() == p2.lower():
@@ -40,22 +40,22 @@ def player_vs_player():
             if p2 == "paper":
                 print("Paper wraps the Rock...")
                 print("Player 2 wins!")
-            elif p2 == "scissor":
-                print("Rock breaks Scissor")
+            elif p2 == "scissors":
+                print("Rock breaks Scissors")
                 print("Player 1 wins!")
         elif p1 == "paper":
             if p2 == "rock":
                 print("Paper wraps the Rock...")
                 print("Player 1 wins!")
-            elif p2 == "scissor":
-                print("...Scissor cuts Paper")
+            elif p2 == "scissors":
+                print("...Scissors cuts Paper")
                 print("Player 2 wins!")
-        elif p1 == "scissor":
+        elif p1 == "scissors":
             if p2 == "rock":
-                print("Rock breaks Scissor")
+                print("Rock breaks Scissors")
                 print("Player 2 wins!")
             elif p2 == "paper":
-                print("...Scissor cuts Paper")
+                print("...Scissors cuts Paper")
                 print("Player 2 wins!")
         
         play_again = input("Play again? (yes/no): ").lower()
@@ -66,59 +66,66 @@ def player_vs_player():
 
 def player_vs_computer():
     while True:
-        print("\nWelcome to Ai Rock Paper Scissor\n")
+        print("\nWelcome to Ai Rock Paper Scissors\n")
         computer = random.choice(choices)
-        player = input("Rock, Paper, or Scissor?: ").lower()
+        player = input("Rock, Paper, or Scissors?: ").lower()
 
         while player not in choices:
             print("Wrong input, try typing again")
-            player = input("Rock, Paper, or Scissor?: ").lower()
+            player = input("Rock, Paper, or Scissors?: ").lower()
 
         if player == computer:
             print("Player picked: ", player)
             time.sleep(1)
             print("Computer picked: ", computer)
+            time.sleep(1)
             print("Same choice picked")
             print("Game is a draw")
         elif player == "rock":
             if computer == "paper":
                 print("Player picked: ", player)
                 time.sleep(1)
-                print("Computer picked: ", computer)    
+                print("Computer picked: ", computer) 
+                time.sleep(1)   
                 print("Paper wraps the Rock...")
-                print("Player 2 wins!")
-            elif computer == "scissor":
+                print("Computer wins!")
+            elif computer == "scissors":
                 print("Player picked: ", player)
                 time.sleep(1)
                 print("Computer picked: ", computer)
-                print("Rock breaks Scissor")
+                time.sleep(1)
+                print("Rock breaks Scissors")
                 print("Player 1 wins!")
         elif player == "paper":
             if computer == "rock":
                 print("Player picked: ", player)
                 time.sleep(1)
                 print("Computer picked: ", computer)
+                time.sleep(1)
                 print("Paper wraps the Rock...")
                 print("Player 1 wins!")
-            elif computer == "scissor":
+            elif computer == "scissors":
                 print("Player picked: ", player)
                 time.sleep(1)
                 print("Computer picked: ", computer)
-                print("...Scissor cuts Paper")
-                print("Player 2 wins!")
-        elif player == "scissor":
+                time.sleep(1)
+                print("...Scissors cuts Paper")
+                print("Computer wins!")
+        elif player == "scissors":
             if computer == "rock":
                 print("Player picked: ", player)
                 time.sleep(1)
                 print("Computer picked: ", computer)
-                print("Rock breaks Scissor")
-                print("Player 2 wins!")
+                time.sleep(1)
+                print("Rock breaks Scissors")
+                print("Computer wins!")
             elif computer == "paper":
                 print("Player picked: ", player)
                 time.sleep(1)
                 print("Computer picked: ", computer)
-                print("...Scissor cuts Paper")
-                print("Player 2 wins!")
+                time.sleep(1)
+                print("...Scissors cuts Paper")
+                print("Computer wins!")
         
         play_again = input("Play again? (yes/no): ").lower()
 

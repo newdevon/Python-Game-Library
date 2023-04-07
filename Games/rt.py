@@ -16,7 +16,7 @@ def reaction_time():
         time.sleep(0.5)
         print("Get set")
         time.sleep(random.uniform(1,5))
-        print("\nGO!!! PRESS NOW!!!")
+        print("\n--- GO!!! PRESS ENTER NOW!!! ---")
         now = time.time()
         input()
         later = time.time()
