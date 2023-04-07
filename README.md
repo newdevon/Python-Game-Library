@@ -1,6 +1,8 @@
 # Python Game Library
 
-Python Game library is a small curated collection of GUI and command-line games. With well known classics such as Connect 4, Tic-Tac-Toe, Rock-Paper-Scissors, and more.
+Python Game library is a small curated collection of GUI and command-line games. With well known classics such as Pong, Connect 4, Tic-Tac-Toe, Rock-Paper-Scissors, and more.
+
+NEW: Pong has now been added to the library, Pong can be played with another person with the (W/S) or (Up/Down) keys!
 
 ## Installation/Requirements
 
